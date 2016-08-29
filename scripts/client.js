@@ -19,13 +19,13 @@ var wallNumber = $('#wallNumber').value;
 
 //页面初始化就缓存好音频文件
 var audio1 = document.createElement('audio');
-audio1.src = '../audio/exploed.wav';
+audio1.src = 'audio/exploed.wav';
 var audio2 = document.createElement('audio');
-audio2.src = '../audio/gameover.wav';
+audio2.src = 'audio/gameover.wav';
 var audio3 = document.createElement('audio');
-audio3.src = '../audio/missile.wav';
+audio3.src = 'audio/missile.wav';
 var audio4 = document.createElement('audio');
-audio4.src = '../audio/wall.wav';
+audio4.src = 'audio/wall.wav';
 
 welcome();//显示欢迎
 
@@ -216,7 +216,7 @@ $('#stop').addEventListener('click', function (){
 	if(!stop){
 		clickStop = true;
 		gameover();
-		exploedAudio('../audio/gameover.wav');
+		exploedAudio('audio/gameover.wav');
 		$('#stop').innerHTML = 'start';
 		$('#stop').title = '开始';
 	}else{
