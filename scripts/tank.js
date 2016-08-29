@@ -10,17 +10,11 @@ function Tank(dir, x, y, good){
 	this.x = x;
 	this.y = y;
 	this.good = good;
-	if(good){//根据敌我设置移动速度
-		this.speed = speed || 10;
-	}else{
-		this.speed = speed || 20;
-	}
-	this.live = true;
 }
 
 //游戏初始创建四个AI
 function createInitAI(){
-	for(var i = 0; i < AIPos.length; i++){
+	for(var i = 0,j = AIPos.length; i < j; i++){
 		var ai = new Tank(createDir(), AIPos[i][0], AIPos[i][1], false);
 		ai.step = createStep();
 		ai.index = i;
@@ -50,7 +44,7 @@ function createOneAI(){
 
 //随机化AI的移动
 function moveAI(){
-	for(var i = 0; i < tanks.length; i++){
+	for(var i = 0,j = tanks.length; i < j; i++){
 		if(tanks[i].step){
 			tanks[i].step--;
 			if(tanks[i].dir === 'l'){
@@ -103,7 +97,7 @@ function delTank(i){
 	if(!tanks.length){
 		return;
 	}
-	for(var j = i; j < tanks.length; j++){
+	for(var j = i, k = tanks.length; j < k; j++){
 		tanks[j].index--;
 	}
 }

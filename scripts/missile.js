@@ -91,7 +91,7 @@ function killTank(t, m, x, y){
 
 //画子弹
 function drawMissile(){
-	for(var i = 0; i < missiles.length; i++){
+	for(var i = 0, j = missiles.length; i < j; i++){
 		var x = missiles[i].x;
 		var y = missiles[i].y;
 		if(missiles[i].dir === 'l'){
@@ -132,7 +132,7 @@ function delMissile(i){
 	if(!missiles.length){
 		return;
 	}
-	for(var j = i; j < missiles.length; j++){
+	for(var j = i, k = missiles.length; j < k; j++){
 		missiles[j].index--;
 	}
 }

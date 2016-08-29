@@ -17,7 +17,7 @@ function createExploed(x, y){
 //画爆炸
 function drawExploed(){
 	var html = '';
-	for(var i = 0; i < exploeds.length; i++){
+	for(var i = 0, j = exploeds.length; i < j; i++){
 		var x = exploeds[i].x;
 		var y = exploeds[i].y;
 		var s = exploeds[i].step;

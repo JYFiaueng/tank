@@ -35,7 +35,7 @@ function createInitWall(){
 //画墙
 function drawWall(){
 	var html = '', p;
-	for(var i = 0; i < walls.length; i++){
+	for(var i = 0, j = walls.length; i < j; i++){
 		var x = walls[i].x;
 		var y = walls[i].y;
 		gameArr[y][x] = {
@@ -45,7 +45,6 @@ function drawWall(){
 		p = getPos(y, x);
 		html += '<div style="position:absolute;left:'+p.x+'px;top:'+p.y+'px;"></div>';
 	}
-	return html;
 }
 
 //将指定位置的墙删除并整理数组和剩余坦克的索引
@@ -54,7 +53,7 @@ function delWall(i){
 	if(!walls.length){
 		return;
 	}
-	for(var j = i; j < walls.length; j++){
+	for(var j = i, k = walls.length; j < k; j++){
 		walls[j].index--;
 	}
 }

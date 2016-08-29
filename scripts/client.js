@@ -1,5 +1,7 @@
 var gamePanel = $('#gamePanel');
 var info = $('#info');
+var $pause = $('#pause');
+var $stop = $('#stop');
 var id = -1;
 var speed = 40;
 var gameArr = [];//游戏数组，30X30
@@ -90,10 +92,10 @@ function game(){
 function gameover(){
 	clearInterval(id);
 	stop = true;
-	$('#pause').innerHTML = 'pause';
-	$('#stop').innerHTML = 'start';
-	$('#pause').title = '暂停';
-	$('#stop').title = '开始';
+	$pause.innerHTML = 'pause';
+	$stop.innerHTML = 'start';
+	$pause.title = '暂停';
+	$stop.title = '开始';
 	setTimeout(function(){
 		gameoverAnmiation();
 	}, 500);
@@ -192,25 +194,25 @@ document.addEventListener('keyup', function(event){
 	}
 });
 
-$('#pause').addEventListener('click', function (){
+$pause.addEventListener('click', function (){
 	if(stop){
 		return;
 	}
 	if(!pause){
 		clearInterval(id);
 		pause = true;
-		$('#pause').innerHTML = 'play';
-		$('#pause').title = '继续';
+		$pause.innerHTML = 'play';
+		$pause.title = '继续';
 	}else{
 		pause = false;
 		game();
-		$('#pause').innerHTML = 'pause';
-		$('#pause').title = '暂停';
+		$pause.innerHTML = 'pause';
+		$pause.title = '暂停';
 	}
 });
 
 var clickStop = true;//对点击进行限制，初次加载欢迎页显示完成后会改为false
-$('#stop').addEventListener('click', function (){
+$stop.addEventListener('click', function (){
 	if(clickStop){
 		return;
 	}
@@ -218,12 +220,12 @@ $('#stop').addEventListener('click', function (){
 		clickStop = true;
 		gameover();
 		exploedAudio('./audio/gameover.wav');
-		$('#stop').innerHTML = 'start';
-		$('#stop').title = '开始';
+		$stop.innerHTML = 'start';
+		$stop.title = '开始';
 	}else{
 		init();
-		$('#stop').innerHTML = 'stop';
-		$('#stop').title = '结束';
+		$stop.innerHTML = 'stop';
+		$stop.title = '结束';
 	}
 });
 
