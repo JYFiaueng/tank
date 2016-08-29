@@ -16,7 +16,7 @@ function createMissile(x ,y ,dir, good){
 	var m = new Missile(x, y, dir, good);
 	m.index = missiles.length;
 	missiles.push(m);
-	exploedAudio('tank/audio/missile.wav');
+	exploedAudio('./audio/missile.wav');
 }
 
 //产生子弹的数组填充信息
@@ -58,7 +58,7 @@ function killTank(t, m, x, y){
 		if(m.good){//好弹
 			return true;
 		}else{//坏弹，打死myTank，游戏结束
-			exploedAudio('tank/audio/gameover.wav');
+			exploedAudio('./audio/gameover.wav');
 			gameover();
 		}
 	}else if(t.type === 'tank'){//撞到了普通坦克
@@ -68,7 +68,7 @@ function killTank(t, m, x, y){
 			delMissile(m.index);//去掉子弹
 			delTank(t.index);//去掉敌人
 			createExploed(x, y);//在碰撞的位置产生一个爆炸
-			exploedAudio('tank/audio/exploed.wav');//产生一个爆炸声音
+			exploedAudio('./audio/exploed.wav');//产生一个爆炸声音
 			return false;
 		}else{//坏弹
 			return true;
@@ -84,7 +84,7 @@ function killTank(t, m, x, y){
 	}else if(t.type === 'wall'){//子弹碰到墙
 		delWall(t.index);//去掉墙
 		delMissile(m.index);//去掉子弹
-		exploedAudio('tank/audio/wall.wav');
+		exploedAudio('./audio/wall.wav');
 		return false;
 	}
 }
