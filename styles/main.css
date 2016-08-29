@@ -1,0 +1,84 @@
+body{
+	background-color: #828069;
+}
+
+body div{
+	color: #fff;
+}
+
+#gamePanel{
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	border: 3px solid #000;
+	width: 600px;
+	height: 600px;
+}
+
+#gamePanel div{
+	position: absolute;
+	width: 10px;
+	height: 10px;
+	border: 2px solid #000;
+	padding: 4px;
+	background-color: #000;
+	background-clip: content-box;
+}
+
+#configure{
+	position: absolute;
+	top: 10px;
+	left: 50%;
+	width: 200px;
+	margin-left: -530px;
+	border: 1px solid #fff;
+	text-align: center;
+}
+
+#explain{
+	position: absolute;
+	top: 360px;
+	left: 50%;
+	width: 200px;
+	word-wrap: break-word;
+	margin-left: -530px;
+	border: 1px solid #fff;
+	text-align: center;
+}
+
+#explain img{
+	height: 200px;
+}
+
+#pause,#stop{
+	display: inline-block;
+	width: 35px;
+	height: 35px;
+	border-radius: 50%;
+	padding: 5px;
+	text-align: center;
+	line-height: 35px;
+	font-size: 12px;
+	color: #000;
+	font-weight: bold;
+	border:3px solid #fff;
+	background-color: #fff;
+	background-clip: content-box;
+	cursor: pointer;
+}
+#stop:hover,#pause:hover{
+	border:3px solid #aaa;
+	background-color: #aaa;
+}
+
+#info{
+	color: #fff;
+}
+
+h3{
+	color: #fff;
+	font-size: 25px;
+}
