@@ -40,6 +40,7 @@ function init(){
 	AINumber = $('#AINumber').value;
 	level = 9 - $('#level').value;
 	createAISpeed = $('#createAISpeed').value*2;
+	wallNumber = $('#wallNumber').value
 	killTankCount = 0;
 	stop = false;
 	initGameArr();
