@@ -36,6 +36,7 @@ body div{
 	margin-left: -530px;
 	border: 1px solid #fff;
 	text-align: center;
+	font-size: 12px;
 }
 
 #explain{
@@ -47,6 +48,7 @@ body div{
 	margin-left: -530px;
 	border: 1px solid #fff;
 	text-align: center;
+	font-size: 12px;
 }
 
 #explain img{
@@ -76,6 +78,7 @@ body div{
 
 #info{
 	color: #fff;
+	font-size: 12px;
 }
 
 h3{
