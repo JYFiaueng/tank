@@ -175,9 +175,6 @@ document.addEventListener('keydown', function(event){
 			event.preventDefault();
 			moveBottom(myTank);
 			break;
-		case 74:
-			event.preventDefault();
-			superMissile();
 		default:
 			break;
 	}
@@ -191,6 +188,10 @@ document.addEventListener('keyup', function(event){
 	if(event.keyCode === 17){
 		event.preventDefault();
 		createMissile(myTank.x, myTank.y, myTank.dir, true);
+	}
+	if(event.keyCode === 74){
+		event.preventDefault();
+		superMissile();
 	}
 });
 
