@@ -42,7 +42,7 @@ function init(){
 	AINumber = $('#AINumber').value;
 	level = 9 - $('#level').value;
 	createAISpeed = $('#createAISpeed').value*2;
-	wallNumber = $('#wallNumber').value
+	wallNumber = $('#wallNumber').value;
 	killTankCount = 0;
 	stop = false;
 	initGameArr();
@@ -232,6 +232,20 @@ $stop.addEventListener('click', function (){
 		$stop.title = '结束';
 	}
 });
+
+$('#AINumber').onchange = function(){
+	AINumber = $('#AINumber').value;
+}
+$('#level').onchange = function(){
+	level = 9 - $('#level').value;
+}
+$('#createAISpeed').onchange = function(){
+	createAISpeed = $('#createAISpeed').value*2;
+}
+//由于墙的数量一开始就是规定好的，所以不进行改变
+// $('#wallNumber').onchange = function(){
+// 	wallNumber = $('#wallNumber').value;
+// }
 
 //绘制函数，将全部的坦克、子弹、墙，全部根据位置绘制出来
 function draw(){
