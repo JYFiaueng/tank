@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+	<title>坦克大战</title>
+	<link rel="shortcut icon" href="favicon_jyf.ico">
+	<link rel="stylesheet" href="styles/reset.css">
+	<link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+
+<div id="gamePanel">
+	
+</div>
+
+<div id="configure">
+	<h3>可配置项:</h3>
+	<div class="set">AI最大数量：1-10<br/><input type="range" id="AINumber" max="10" min="1" value="4"></div>
+	<div class="set">AI子弹发射频率：1-8<br><input type="range" id="level" max="8" min="1" value="1"></div>
+	<div class="set">AI平均生成速度：10ms-100ms<br><input type="range" id="createAISpeed" max="100" min="10" value="30"></div>
+	<div class="set">wall的最大数量：0-100<br><input type="range" id="wallNumber" min="0" max="100" value="50"></div>
+
+	<div id="stop" title="开始">start</div>
+	<div id="pause" title="暂停">pause</div>
+
+	<h3>游戏数据:</h3>
+	<div id="info">
+		killTankCount:<br>
+		tanks:<br>
+		missiles:<br>
+		exploeds:<br>
+		walls:<br>
+	</div>
+</div>
+
+<div id="explain">
+	<h3>说明：</h3>
+	<p>start按钮可以开始新游戏和结束游戏，pause按钮用于暂停游戏。</p>
+	<p>按上下左右移动，按ctrl发射子弹，按j作弊。</p>
+	<p>仿造小时候玩的黑白5元机上的坦克大战，就是下面这货，图片来自某宝。</p>
+	<img src="gb.jpg">
+</div>
+
+<script src="scripts/tank.js"></script>
+<script src="scripts/missile.js"></script>
+<script src="scripts/wall.js"></script>
+<script src="scripts/exploed.js"></script>
+<script src="scripts/client.js"></script>
+</body>
+</html>
