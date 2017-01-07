@@ -25,7 +25,7 @@ function setGameArrMissile(m){
 		type:'missile',
 		good:m.good,
 		index:m.index
-	}
+	};
 }
 
 //子弹的碰撞检测
@@ -91,7 +91,7 @@ function killTank(t, m, x, y){
 
 //画子弹
 function drawMissile(){
-	for(var i = 0, j = missiles.length; i < j; i++){
+	for(var i = 0; i < missiles.length; i++){
 		var x = missiles[i].x;
 		var y = missiles[i].y;
 		if(missiles[i].dir === 'l'){
@@ -132,7 +132,7 @@ function delMissile(i){
 	if(!missiles.length){
 		return;
 	}
-	for(var j = i, k = missiles.length; j < k; j++){
+	for(var j = i; j < missiles.length; j++){
 		missiles[j].index--;
 	}
 }

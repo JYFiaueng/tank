@@ -35,7 +35,7 @@ function createInitWall(){
 //画墙
 function drawWall(){
 	var html = '', p;
-	for(var i = 0, j = walls.length; i < j; i++){
+	for(var i = 0; i < walls.length; i++){
 		var x = walls[i].x;
 		var y = walls[i].y;
 		gameArr[y][x] = {
@@ -53,7 +53,7 @@ function delWall(i){
 	if(!walls.length){
 		return;
 	}
-	for(var j = i, k = walls.length; j < k; j++){
+	for(var j = i; j < walls.length; j++){
 		walls[j].index--;
 	}
 }

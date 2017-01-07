@@ -1,4 +1,7 @@
 var gamePanel = $('#gamePanel');
+gamePanel.width = 600;
+gamePanel.height = 600;
+var ctx = gamePanel.getContext("2d");
 var info = $('#info');
 var $pause = $('#pause');
 var $stop = $('#stop');
@@ -67,6 +70,7 @@ function game(){
 	var step = 5;
 	var AIctrl = 20;
 	id = setInterval(function (){
+		//ctx.clearRect(0,0,600,600);
 		initGameArr();//这个必须在draw之前
 		drawTank(myTank);
 		drawAI();
@@ -103,20 +107,17 @@ function gameover(){
 
 //游戏结束动画
 function gameoverAnmiation(){
-	var i = 30, p, d;
+	var i = 30, p;
 	var t = setInterval(function(){
-		if(i===1){
+		if(i===0){
 			clearInterval(t);
+			ctx.clearRect(0, 0, gamePanel.width, gamePanel.height);
 			welcome();
 			return;
 		}
 		for(var j = 29; j >= 0; j--){
 			p = getPos(i-1, j);
-			d = document.createElement('div');
-			d.style.position = 'absolute';
-			d.style.left = p.y+'px';
-			d.style.top = p.x+'px';
-			gamePanel.appendChild(d);
+			drawRect(p.y, p.x);
 		}
 		i--;
 	}, 40);
@@ -124,8 +125,7 @@ function gameoverAnmiation(){
 
 //等待和欢迎界面
 function welcome(){
-	gamePanel.innerHTML = '';
-	var pos = [
+	var pos = [//welcome JYF
 				[[18,18],[19,18],[20,18],[21,18],[22,18],[23,18],[24,18],[25,18],[18,19],[18,20],[18,21],[21,19],[21,20],[21,21]],
 				[[20,14],[20,15],[21,14.5],[22,14.5],[23,14.5],[24,14.5],[25,14.5],[18,13],[19,13.5],[19,15.5],[18,16]],
 				[[18,8],[18,9],[18,10],[18,11],[19,11],[20,11],[21,11],[22,11],[23,11],[24,11],[25,8.5],[24,8],[25,9.5],[25,10.5]],
@@ -137,7 +137,7 @@ function welcome(){
 				[[11,5.5], [12,5.5], [13,5.5], [10,6.5], [10,7.5], [14,6.5], [14,7.5], [12,6.5], [12,7.5], [12,8.5], [11,8.5]],
 				[[10,0], [11,0], [12,0.5], [13,0.5], [14,1], [13,1.5], [12,2], [13,2.5], [14,3], [13,3.5], [12,3.5], [11,4], [10,4]]
 			];
-	var i = 10, p, d;
+	var i = 10, p;
 	var t = setInterval(function(){
 		if(i===0){
 			clearInterval(t);
@@ -146,11 +146,7 @@ function welcome(){
 		}
 		for(var j = pos[i-1].length-1; j >= 0; j--){
 			p = getPos(pos[i-1][j][0], pos[i-1][j][1]);
-			d = document.createElement('div');
-			d.style.position = 'absolute';
-			d.style.left = p.y+'px';
-			d.style.top = p.x+'px';
-			gamePanel.appendChild(d);
+			drawRect(p.y, p.x);
 		}
 		i--;
 	}, 300);
@@ -172,7 +168,7 @@ document.addEventListener('keydown', function(event){
 			break;
 		case 39:
 			event.preventDefault();
-			moveRight(myTank)
+			moveRight(myTank);
 			break;
 		case 40:
 			event.preventDefault();
@@ -235,13 +231,13 @@ $stop.addEventListener('click', function (){
 
 $('#AINumber').onchange = function(){
 	AINumber = $('#AINumber').value;
-}
+};
 $('#level').onchange = function(){
 	level = 9 - $('#level').value;
-}
+};
 $('#createAISpeed').onchange = function(){
 	createAISpeed = $('#createAISpeed').value*2;
-}
+};
 //由于墙的数量一开始就是规定好的，所以不进行改变
 // $('#wallNumber').onchange = function(){
 // 	wallNumber = $('#wallNumber').value;
@@ -249,18 +245,29 @@ $('#createAISpeed').onchange = function(){
 
 //绘制函数，将全部的坦克、子弹、墙，全部根据位置绘制出来
 function draw(){
-	var html = '';
 	var p;
+	ctx.fillStyle = "#828069";
+	ctx.clearRect(0, 0, gamePanel.width, gamePanel.height);
+// 	ctx.fillRect(0, 0, gamePanel.width, gamePanel.height);
 	for(var i = 0; i < 30; i++){
 		for(var j = 0; j < 30; j++){
 			if(gameArr[i][j]){
 				p = getPos(j, i);
-				html += '<div style="position:absolute;left:'+p.x+'px;top:'+p.y+'px;"></div>';
+				drawRect(p.x, p.y);
 			}
 		}
 	}
-	html += drawExploed();//把爆炸加到画面中
-	gamePanel.innerHTML = html;
+	drawExploed();//把爆炸加到画面中
+}
+
+// canvas在指定位置绘制一个方块
+function drawRect(x, y){
+	ctx.beginPath();
+	ctx.fillStyle = "#000";
+	ctx.fillRect(x-2, y-2, 22, 22);//画一个矩形
+	ctx.clearRect(x, y, 18, 18);
+	ctx.fillRect(x+4, y+4, 10, 10);//画一个矩形
+	ctx.stroke();
 }
 
 //根据参数获取位置
