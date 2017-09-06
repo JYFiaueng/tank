@@ -1,26 +1,30 @@
 var gamePanel = $('#gamePanel');
-gamePanel.width = 600;
-gamePanel.height = 600;
-var ctx = gamePanel.getContext("2d");
 var info = $('#info');
 var $pause = $('#pause');
 var $stop = $('#stop');
-var id = -1;
-var speed = 40;
+var AINumber = $('#AINumber').value;//AI的最大数量
+var level = 9 - $('#level').value;//控制子弹的产生频率0-8，下面用的是random*10
+var createAISpeed = $('#createAISpeed').value*2; //AI创建速度
+var wallNumber = $('#wallNumber').value; //墙的数量
+
+// 数据
 var gameArr = [];//游戏数组，30X30
-var myTank = new Tank('t', 13, 28, true);//我的坦克
 var tanks = [];//敌人坦克数组
 var walls = [];//墙
 var missiles = [];//子弹
 var exploeds = [];//爆炸
-var AINumber = $('#AINumber').value;//AI的最大数量
-var AIPos = [[1,1], [10,1], [20,1], [28,1]];//AI的产生位置
-var pause = false;//暂停
-var level = 9 - $('#level').value;//控制子弹的产生频率0-8，下面用的是random*10
-var killTankCount = 0;
+
+var killTankCount = 0; //消灭的坦克数量
 var stop = true;//结束
-var createAISpeed = $('#createAISpeed').value*2;
-var wallNumber = $('#wallNumber').value;
+var pause = false;//暂停
+var id = -1; // 记录setTimeout返回的id
+var speed = 40; // 页面刷新速度
+
+gamePanel.width = 600;
+gamePanel.height = 600;
+var ctx = gamePanel.getContext("2d");
+var AIPos = [[1,1], [10,1], [20,1], [28,1]];//AI的产生位置
+var myTank = new Tank('t', 13, 28, true); //我的坦克
 
 //页面初始化就缓存好音频文件
 var audio1 = document.createElement('audio');
@@ -54,14 +58,15 @@ function init(){
 	game();
 }
 
-//更新界面信息
+//更新界面数据
 function updateInfo(){
-	var html = '';
-	html += 'killTankCount:'+killTankCount+'<br/>';
-	html += 'tanks:'+tanks.length+'<br/>';
-	html += 'missiles:'+missiles.length+'<br/>';
-	html += 'exploeds:'+exploeds.length+'<br/>';
-	html += 'walls:'+walls.length+'<br/>';
+	let html = `
+		killTankCount: ${killTankCount}<br/>
+		tanks: ${tanks.length}<br/>
+		missiles: ${missiles.length}<br/>
+		exploeds: ${exploeds.length}<br/>
+		walls: ${walls.length}<br/>
+	`;
 	info.innerHTML = html;
 }
 
