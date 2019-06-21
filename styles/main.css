@@ -18,7 +18,7 @@ body div{
 	height: 600px;
 }
 
-#gamePanel div{
+/* #gamePanel div{
 	position: absolute;
 	width: 10px;
 	height: 10px;
@@ -26,7 +26,7 @@ body div{
 	padding: 4px;
 	background-color: #000;
 	background-clip: content-box;
-}
+} */
 
 #configure{
 	position: absolute;

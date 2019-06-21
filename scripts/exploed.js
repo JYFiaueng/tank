@@ -17,7 +17,7 @@ function createExploed(x, y){
 //画爆炸
 function drawExploed(){
 	var html = '';
-	for(var i = 0, j = exploeds.length; i < j; i++){
+	for(var i = 0; i < exploeds.length; i++){
 		var x = exploeds[i].x;
 		var y = exploeds[i].y;
 		var s = exploeds[i].step;
@@ -26,13 +26,13 @@ function drawExploed(){
 			for(var j = x-1; j <= x+1; j++){
 				for(var k = y-1; k <= y+1; k++){
 					p = getPos(j, k);
-					html += '<div style="position:absolute;left:'+p.x+'px;top:'+p.y+'px;"></div>';
+					drawRect(p.x, p.y);
 				}
 			}
 			exploeds[i].step--;
 		}else if(s === 1 || s === 5){//创建一个1格的小爆炸
 			p = getPos(x, y);
-			html += '<div style="position:absolute;left:'+p.x+'px;top:'+p.y+'px;"></div>';
+			drawRect(p.x, p.y);
 			exploeds[i].step--;
 		}else if(s === 0){//把爆炸从画面中删掉
 			exploeds.splice(i, 1);

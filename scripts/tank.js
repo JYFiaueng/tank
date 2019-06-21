@@ -14,7 +14,7 @@ function Tank(dir, x, y, good){
 
 //游戏初始创建四个AI
 function createInitAI(){
-	for(var i = 0,j = AIPos.length; i < j; i++){
+	for(var i = 0; i < AIPos.length; i++){
 		var ai = new Tank(createDir(), AIPos[i][0], AIPos[i][1], false);
 		ai.step = createStep();
 		ai.index = i;
@@ -44,7 +44,7 @@ function createOneAI(){
 
 //随机化AI的移动
 function moveAI(){
-	for(var i = 0,j = tanks.length; i < j; i++){
+	for(var i = 0; i < tanks.length; i++){
 		if(tanks[i].step){
 			tanks[i].step--;
 			if(tanks[i].dir === 'l'){
@@ -69,8 +69,7 @@ function moveAI(){
 
 //画AI
 function drawAI(){
-	var l = tanks.length;
-	for(var i = 0; i < l; i++){
+	for(var i = 0; i < tanks.length; i++){
 		drawTank(tanks[i]);
 	}
 }
@@ -97,7 +96,7 @@ function delTank(i){
 	if(!tanks.length){
 		return;
 	}
-	for(var j = i, k = tanks.length; j < k; j++){
+	for(var j = i; j < tanks.length; j++){
 		tanks[j].index--;
 	}
 }
